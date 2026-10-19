@@ -8,14 +8,11 @@
     let text = baseMessage;
     if (organization.trim()) text += '\nالمدرسة أو الجهة: ' + organization.trim();
     if (note.trim()) text += '\nالاستفسار: ' + note.trim();
-    return 'https://wa.me/' + number + '?text=' + encodeURIComponent(text);
+    return 'https://api.whatsapp.com/send?phone=' + number + '&text=' + encodeURIComponent(text);
   };
   if (validNumber) {
-    document.querySelectorAll('[data-order]').forEach(a => { a.href = requestUrl(); a.removeAttribute('target'); });
-    const fallback = document.querySelector('.contact-help a');
-    if (fallback) fallback.href = 'https://api.whatsapp.com/send?phone=' + number + '&text=' + encodeURIComponent(baseMessage);
-    const phone = document.querySelector('.phone-line bdi');
-    if (phone) phone.textContent = '+' + number;
+    document.querySelectorAll('[data-order]').forEach(a => { a.href = requestUrl(); a.target = '_blank'; a.rel = 'noopener noreferrer'; });
+
   }
   document.querySelectorAll('[data-demo]').forEach(a => {
     const url = window.SITE_CONFIG?.demoUrl;
@@ -37,23 +34,12 @@
   nav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
   const form = document.getElementById('request-form');
-  form?.addEventListener('submit', e => {
-    if (!validNumber) return; // Preserve the native form action and its fallback number.
-    e.preventDefault();
-    window.location.assign(requestUrl(form.elements.organization.value, form.elements.note.value));
-  });
-  document.querySelector('.copy-number')?.addEventListener('click', async () => {
-    const value = '+' + (validNumber ? number : '96895214998');
-    const status = document.querySelector('.copy-status');
-    try {
-      if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(value);
-      else {
-        const field = document.createElement('textarea'); field.value = value;
-        field.style.position = 'fixed'; field.style.opacity = '0'; document.body.append(field);
-        field.select(); const ok = document.execCommand('copy'); field.remove();
-        if (!ok) throw new Error('copy unavailable');
-      }
-      status.textContent = 'تم نسخ رقم واتساب.';
-    } catch { status.textContent = 'يمكنك تحديد الرقم الظاهر ونسخه يدويًا.'; }
+  form?.addEventListener('submit', () => {
+    // Native form submission opens WhatsApp outside the embedded site.
+    // Update the hidden message synchronously; retain native navigation.
+    if (!validNumber) return;
+    const url = new URL(requestUrl(form.elements.organization.value, form.elements.note.value));
+    form.elements.phone.value = number;
+    form.elements.text.value = url.searchParams.get('text');
   });
 })();
