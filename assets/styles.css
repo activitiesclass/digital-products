@@ -6,3 +6,12 @@
 @media(max-width:380px){.product-actions{flex-wrap:wrap;gap:7px}.product-actions .button{width:100%;justify-content:center}.hero-foot{gap:17px;font-size:8px}.hero-foot>span+span:before{right:-9px}.requirements{padding-inline:19px}}
 
 .product-features a{display:flex;gap:6px;align-items:center;color:#74ddd5;text-decoration:underline;text-decoration-color:rgba(116,221,213,.45);text-underline-offset:3px}.product-features a:hover{text-decoration-color:currentColor}
+
+/* Clear, roomy legal links across the company and product pages. */
+.footer-with-links{display:grid;grid-template-columns:minmax(0,1fr) auto auto;column-gap:30px;row-gap:20px;align-items:center}
+.footer-with-links .footer-links{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:100%;padding-top:18px;border-top:1px solid var(--line)}
+.footer-with-links .footer-links a{display:flex;justify-content:center;align-items:center;min-height:46px;padding:10px 16px;border:1px solid #333c4a;border-radius:10px;background:var(--panel);font-size:12px;text-align:center;transition:border-color .2s,background .2s,color .2s}
+.footer-with-links .footer-links a:hover,.footer-with-links .footer-links a[aria-current=page]{color:var(--accent);border-color:#596778;background:#141b26}
+.program-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+@media(max-width:800px){.footer-with-links{grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:14px}.footer-with-links>.brand{grid-column:1/-1}.footer-with-links .footer-links{grid-column:1/-1;grid-template-columns:1fr;gap:10px;padding-top:16px}}
+@media(max-width:560px){.footer-with-links{grid-template-columns:1fr;gap:16px}.footer-with-links>p,.footer-with-links>a:last-child{justify-self:start}.footer-with-links .footer-links a{min-height:44px;justify-content:flex-start;padding-inline:15px}}
