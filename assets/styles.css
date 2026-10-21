@@ -15,3 +15,28 @@
 .program-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
 @media(max-width:800px){.footer-with-links{grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:14px}.footer-with-links>.brand{grid-column:1/-1}.footer-with-links .footer-links{grid-column:1/-1;grid-template-columns:1fr;gap:10px;padding-top:16px}}
 @media(max-width:560px){.footer-with-links{grid-template-columns:1fr;gap:16px}.footer-with-links>p,.footer-with-links>a:last-child{justify-self:start}.footer-with-links .footer-links a{min-height:44px;justify-content:flex-start;padding-inline:15px}}
+
+/* User selectable dark and light themes. */
+:root{--accent-ink:#10271f;--header-bg:#0b0e14ed}
+:root[data-theme="light"]{color-scheme:light;--bg:#f5f7fb;--panel:#ffffff;--panel2:#eef2f7;--ink:#1a2435;--muted:#59677b;--line:#dce3ed;--accent:#167653;--accent-ink:#ffffff;--header-bg:rgba(255,255,255,.94)}
+:root[data-theme="dark"]{color-scheme:dark}
+.header{background:var(--header-bg);border-bottom-color:var(--line)}
+.nav nav{color:var(--muted)}
+.brand small{color:var(--muted)}
+.outline{border-color:var(--line);color:var(--ink)}
+.outline:hover{background:var(--panel2);border-color:var(--muted)}
+.menu-toggle{border-color:var(--line);color:var(--ink)}
+.nav nav.open{background:var(--panel);border-bottom-color:var(--line)}
+.product-card{border-color:var(--line)}
+.product-card:hover{border-color:var(--muted);box-shadow:0 16px 45px #0002}
+.footer-with-links .footer-links a{border-color:var(--line)}
+.footer-with-links .footer-links a:hover,.footer-with-links .footer-links a[aria-current=page]{background:var(--panel2)}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:76px;min-height:42px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font-size:13px;font-weight:800;line-height:1;transition:background .2s,border-color .2s,color .2s}
+.theme-toggle:hover{background:var(--panel2);border-color:var(--muted)}
+.theme-toggle svg{width:17px;height:17px}
+.theme-moon{display:none}
+:root[data-theme="light"] .theme-sun{display:none}
+:root[data-theme="light"] .theme-moon{display:block}
+.trial-button{background:#3778ff;color:#fff;border-color:#3778ff;box-shadow:0 0 0 4px #3778ff24}
+.trial-button:hover{background:#245fdb;border-color:#245fdb;box-shadow:0 0 0 5px #3778ff30}
+@media(max-width:560px){.theme-toggle{min-width:68px;padding-inline:9px}}
