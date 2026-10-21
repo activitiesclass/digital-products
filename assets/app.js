@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const raw = String(window.SITE_CONFIG?.whatsappNumber || '96895214998');
+  const raw = String(window.SITE_CONFIG?.whatsappNumber || '96894054911');
   const number = raw.replace(/[^0-9]/g, '');
   const validNumber = /^[1-9]\d{7,14}$/.test(number);
   const baseMessage = 'مرحبًا منتجات رقمية، أرغب في طلب برنامج الأنشطة الصفية التفاعلية لمدرستي ومعرفة السعر وتفاصيل التجهيز.';
