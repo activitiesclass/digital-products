@@ -4,14 +4,14 @@
   const number = raw.replace(/[^0-9]/g, '');
   const validNumber = /^[1-9]\d{7,14}$/.test(number);
   const baseMessage = 'مرحبًا منتجات رقمية، أرغب في طلب برنامج الأنشطة الصفية التفاعلية لمدرستي ومعرفة السعر وتفاصيل التجهيز.';
-  const requestUrl = (organization = '', note = '') => {
-    let text = baseMessage;
+  const requestUrl = (organization = '', note = '', program = 'برنامج الأنشطة الصفية التفاعلية') => {
+    let text = baseMessage.replace('برنامج الأنشطة الصفية التفاعلية', program);
     if (organization.trim()) text += '\nالمدرسة أو الجهة: ' + organization.trim();
     if (note.trim()) text += '\nالاستفسار: ' + note.trim();
     return 'https://api.whatsapp.com/send?phone=' + number + '&text=' + encodeURIComponent(text);
   };
   if (validNumber) {
-    document.querySelectorAll('[data-order]').forEach(a => { a.href = requestUrl(); a.target = '_blank'; a.rel = 'noopener noreferrer'; });
+    document.querySelectorAll('[data-order]').forEach(a => { a.href = requestUrl('', '', a.dataset.order); a.target = '_blank'; a.rel = 'noopener noreferrer'; });
 
   }
   document.querySelectorAll('[data-demo]').forEach(a => {
