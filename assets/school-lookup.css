@@ -13,3 +13,7 @@
 @media(max-width:600px){.product-art.lookup-screenshot-art{padding:12px}.lookup-screen-frame{border-radius:12px}.lookup-screen-toolbar{height:33px;padding-inline:10px}.lookup-screen-label{font-size:8px}.lookup-screenshot{max-height:none}.lookup-preview-large{padding:12px;border-radius:20px}.lookup-screen-large .lookup-screenshot{max-height:none}.lookup-screen-frame figcaption{font-size:10px;padding:8px}}
 @media(prefers-reduced-motion:reduce){.lookup-screen-frame{transition:none}}
 .lookup-screen-frame{max-width:390px;margin-inline:auto}.lookup-screen-large{max-width:640px}
+
+
+/* Matching frames for classroom activities and Quraa screenshots. */
+.activities-screenshot-art .lookup-screen-toolbar{background:#17476c}.activities-screenshot-art .lookup-screen-body{background:#edf7fc}.activities-screenshot-art .lookup-screen-frame{border-color:#75a6c34d}.quraa-screenshot-art .lookup-screen-frame{max-width:500px}.quraa-screenshot-art .lookup-screen-toolbar{background:#20192f}.quraa-screenshot-art .lookup-screen-body{background:#110d1c}.quraa-screenshot-art .lookup-screenshot{max-height:none}.quraa-screenshot-art .lookup-screen-frame figcaption{background:#20192f;color:#c6b9e4}
